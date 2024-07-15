@@ -1,0 +1,1 @@
+python tools/compilecss.py $1

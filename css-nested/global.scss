@@ -1,0 +1,9 @@
+body{
+    --background-color: #101010;
+    --text-color: #FFFFFF;
+    --accent-color: #FF0000;
+}
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
