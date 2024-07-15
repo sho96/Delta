@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 body {
-  --background-color: #101010;
-  --background-color-light: #202020;
+  --background-color: #000000;
+  --background-color-light: #151515;
   --text-color-dark: #aaaaaa;
   --text-color: #FFFFFF;
   --accent-color: dodgerblue;
