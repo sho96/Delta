@@ -1,0 +1,145 @@
+nav {
+  padding: 10px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+  border-bottom: 1px solid gray;
+}
+nav #nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+nav #nav-logo img {
+  height: 50px;
+}
+nav #nav-logo h1 {
+  margin: 0;
+}
+nav .nav-button {
+  cursor: pointer;
+  width: 100px;
+  box-shadow: inset 0 0 0 0 var(--accent-color);
+  border-radius: 3px;
+  transition: all 0.125s ease-in-out;
+}
+nav .nav-button p {
+  text-align: center;
+  margin: 0;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-decoration: none;
+}
+nav .nav-button:hover {
+  box-shadow: inset 100px 0 0 0 var(--accent-color);
+}
+nav .nav-button:hover p {
+  color: var(--background-color);
+}
+@media screen and (max-width: 700px) {
+  nav {
+    gap: 20px;
+    font-size: 1rem;
+  }
+  nav #nav-logo {
+    margin-right: 10px;
+  }
+  nav #nav-logo img {
+    height: 30px;
+  }
+  nav #nav-logo h1 {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  nav {
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+  nav #nav-logo {
+    margin-right: 5px;
+  }
+  nav #nav-logo img {
+    height: 20px;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid gray;
+}
+header .left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+header .left img {
+  width: 200px;
+}
+header .left h1 {
+  margin: 0;
+  font-size: 7rem;
+}
+header .right {
+  text-align: center;
+}
+header .right h2 {
+  color: var(--text-color-dark);
+  font-size: 1.7rem;
+}
+@media screen and (max-width: 1900px) {
+  header {
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  header .left img {
+    width: 180px;
+  }
+  header .left h1 {
+    font-size: 6rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  header {
+    flex-direction: column;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    gap: 10px;
+  }
+  header .left img {
+    width: 100px;
+  }
+  header .left h1 {
+    font-size: 3rem;
+  }
+  header .right h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  header .right h2 {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+}
