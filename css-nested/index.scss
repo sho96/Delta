@@ -1,6 +1,16 @@
+.text-glow{
+    text-shadow:1px 1px 1px #fff, 1px 1px 10px #ccc;
+}
+
 nav{
+    position: sticky;
+    top: 0;
+    
+    backdrop-filter: blur(15px) brightness(50%);
+
     padding: 10px;
     padding-left: 10px;
+    padding-right: 50px;
 
     font-size: 1.2rem;
 
@@ -21,8 +31,14 @@ nav{
         }
         h1{
             margin: 0;
+            transition: all 0.1s cubic-bezier(1,.5,.5,1);
         }
         margin-right: 20px;
+    }
+    #nav-logo:hover{
+        h1{
+            text-shadow:1px 1px 1px #fff, 1px 1px 10px #ccc;
+        }
     }
     .nav-button{
         p{
@@ -43,14 +59,17 @@ nav{
     .nav-button:hover{
         p{
             color: var(--background-color);
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         box-shadow: inset 100px 0 0 0 var(--accent-color);
     }
 
     @media screen and (max-width: 700px) {
+        backdrop-filter: blur(10px) brightness(50%);
+
         gap: 20px;
         font-size: 1rem;
+        padding-right: 30px;
 
         #nav-logo{
             margin-right: 10px;
@@ -62,7 +81,7 @@ nav{
             }
         }
     }
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 500px) {
         gap: 10px;
         font-size: .8rem;
 
@@ -83,6 +102,8 @@ header{
     padding-top: 100px;
     padding-bottom: 100px;
     border-bottom: 1px solid gray;
+    margin: 0;
+    
     .left{
         display: flex;
         flex-direction: row;
@@ -93,6 +114,7 @@ header{
             width: 200px;
         }
         h1{
+            text-shadow:1px 1px 1px #fff, 1px 1px 10px #ccc;
             margin: 0;
             font-size: 7rem;
         }
@@ -114,10 +136,10 @@ header{
 
         .left{
             img{
-                width: 180px;
+                width: 200px;
             }
             h1{
-                font-size: 6rem;
+                font-size: 6.2rem;
             }
         }
     }
@@ -131,6 +153,25 @@ header{
 
         .left{
             img{
+                width: 150px;
+            }
+            h1{
+                font-size: 4rem;
+            }
+        }
+        .right{
+            h2{
+                font-size: 1.2rem;
+                margin: 0;
+            }
+        }
+    }
+    @media screen and (max-width: 500px) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+        .left{
+            img{
                 width: 100px;
             }
             h1{
@@ -139,20 +180,116 @@ header{
         }
         .right{
             h2{
-                font-size: 1rem;
+                font-size: .8rem;
                 margin: 0;
             }
         }
     }
-    @media screen and (max-width: 400px) {
-        padding-top: 30px;
-        padding-bottom: 30px;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    margin: 0
+}
 
-        
-        .right{
+#phrase-of-update{
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+
+    h1{
+        margin: 0;
+        font-size: 3rem;
+        text-shadow:1px 1px 1px #fff, 1px 1px 5px #ccc;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 700px) {
+        h1{
+            font-size: 2.2rem;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        h1{
+            font-size: 1.5rem;
+        }
+    }
+}
+#updates{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--background-color-light);
+    margin: 0;
+    text-align: center;
+
+    h1{
+        margin: 0;
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    @media screen and (max-width: 700px) {
+        h1{
+            font-size: 1.4rem;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        h1{
+            font-size: 1rem;
+        }
+    }
+
+    div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .update{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
             h2{
-                font-size: .8rem;
                 margin: 0;
+                font-size: 1.5rem;
+            }
+            p{
+                margin: 0;
+                font-size: .8rem;
+                color: var(--text-color-dark);
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .update{
+                h2{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        @media screen and (max-width: 500px) {
+            .update{
+                h2{
+                    font-size: .8rem;
+                }
+                p{
+                    font-size: .6rem;
+                }
             }
         }
     }

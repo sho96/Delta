@@ -1,6 +1,14 @@
+.text-glow {
+  text-shadow: 1px 1px 1px #fff, 1px 1px 10px #ccc;
+}
+
 nav {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(15px) brightness(50%);
   padding: 10px;
   padding-left: 10px;
+  padding-right: 50px;
   font-size: 1.2rem;
   display: flex;
   flex-direction: row;
@@ -20,6 +28,10 @@ nav #nav-logo img {
 }
 nav #nav-logo h1 {
   margin: 0;
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.5, 1);
+}
+nav #nav-logo:hover h1 {
+  text-shadow: 1px 1px 1px #fff, 1px 1px 10px #ccc;
 }
 nav .nav-button {
   cursor: pointer;
@@ -42,12 +54,14 @@ nav .nav-button:hover {
 }
 nav .nav-button:hover p {
   color: var(--background-color);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 @media screen and (max-width: 700px) {
   nav {
+    backdrop-filter: blur(10px) brightness(50%);
     gap: 20px;
     font-size: 1rem;
+    padding-right: 30px;
   }
   nav #nav-logo {
     margin-right: 10px;
@@ -59,7 +73,7 @@ nav .nav-button:hover p {
     display: none;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   nav {
     gap: 10px;
     font-size: 0.8rem;
@@ -81,6 +95,7 @@ header {
   padding-top: 100px;
   padding-bottom: 100px;
   border-bottom: 1px solid gray;
+  margin: 0;
 }
 header .left {
   display: flex;
@@ -93,6 +108,7 @@ header .left img {
   width: 200px;
 }
 header .left h1 {
+  text-shadow: 1px 1px 1px #fff, 1px 1px 10px #ccc;
   margin: 0;
   font-size: 7rem;
 }
@@ -111,10 +127,10 @@ header .right h2 {
     padding-bottom: 50px;
   }
   header .left img {
-    width: 180px;
+    width: 200px;
   }
   header .left h1 {
-    font-size: 6rem;
+    font-size: 6.2rem;
   }
 }
 @media screen and (max-width: 700px) {
@@ -125,23 +141,132 @@ header .right h2 {
     gap: 10px;
   }
   header .left img {
+    width: 150px;
+  }
+  header .left h1 {
+    font-size: 4rem;
+  }
+  header .right h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  header .left img {
     width: 100px;
   }
   header .left h1 {
     font-size: 3rem;
   }
   header .right h2 {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0;
   }
 }
-@media screen and (max-width: 400px) {
-  header {
-    padding-top: 30px;
-    padding-bottom: 30px;
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  margin: 0;
+}
+
+#phrase-of-update {
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+#phrase-of-update h1 {
+  margin: 0;
+  font-size: 3rem;
+  text-shadow: 1px 1px 1px #fff, 1px 1px 5px #ccc;
+  margin: 0;
+}
+@media screen and (max-width: 700px) {
+  #phrase-of-update h1 {
+    font-size: 2.2rem;
   }
-  header .right h2 {
+}
+@media screen and (max-width: 500px) {
+  #phrase-of-update {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  #phrase-of-update h1 {
+    font-size: 1.5rem;
+  }
+}
+
+#updates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--background-color-light);
+  margin: 0;
+  text-align: center;
+}
+#updates h1 {
+  margin: 0;
+  font-size: 2rem;
+  margin: 0;
+}
+@media screen and (max-width: 700px) {
+  #updates h1 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  #updates {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  #updates h1 {
+    font-size: 1rem;
+  }
+}
+#updates div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#updates div .update {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+#updates div .update h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+#updates div .update p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-color-dark);
+}
+@media screen and (max-width: 700px) {
+  #updates div .update h2 {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  #updates div .update h2 {
     font-size: 0.8rem;
-    margin: 0;
+  }
+  #updates div .update p {
+    font-size: 0.6rem;
   }
 }

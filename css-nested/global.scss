@@ -2,7 +2,9 @@
 
 body{
     --background-color: #000000;
+    --background-color-barely-light: #070707;
     --background-color-light: #151515;
+    --background-color-lighter: #2a2a2a;
     --text-color-dark: #aaaaaa;
     --text-color: #eeeeee;
     --accent-color: dodgerblue;
@@ -14,6 +16,9 @@ body{
     margin: 0;
 
     font-family: 'Roboto Mono', monospace;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .unselectable {
@@ -23,4 +28,17 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.var-width-container{
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100px;
+    padding: 10px;
+    margin: 0;
+    align-self: center;
+    @media screen and (min-width: 1200px) {
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+    }
 }
