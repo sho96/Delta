@@ -1,6 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
-body{
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #000000;
+    opacity: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body {
     --background-color: #000000;
     --background-color-barely-light: #070707;
     --background-color-light: #151515;
@@ -10,15 +31,17 @@ body{
     --accent-color: dodgerblue;
 }
 
-body{
+body {
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
 
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
 
     display: flex;
     flex-direction: column;
+
+    overflow: hidden;
 }
 
 .unselectable {
@@ -30,7 +53,7 @@ body{
     user-select: none;
 }
 
-.var-width-container{
+.var-width-container {
     width: 100%;
     max-width: 1200px;
     min-height: 100px;

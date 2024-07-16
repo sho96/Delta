@@ -1,4 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+  opacity: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 body {
   --background-color: #000000;
   --background-color-barely-light: #070707;
@@ -16,6 +37,7 @@ body {
   font-family: "Roboto Mono", monospace;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .unselectable {

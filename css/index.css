@@ -35,19 +35,20 @@ nav #nav-logo:hover h1 {
 }
 nav .nav-button {
   cursor: pointer;
-  width: 100px;
   box-shadow: inset 0 0 0 0 var(--accent-color);
   border-radius: 3px;
   transition: all 0.2s cubic-bezier(1, 0, 0.5, 1);
 }
-nav .nav-button p {
+nav .nav-button a {
+  text-decoration: none;
   text-align: center;
   margin: 0;
   padding: 2px;
   padding-left: 5px;
   padding-right: 5px;
-  text-decoration: none;
+  color: var(--text-color);
   transition: all 0.2s cubic-bezier(1, 0, 0.5, 1);
+  width: 100px;
 }
 nav .nav-button:hover {
   box-shadow: inset 100px 0 0 0 var(--accent-color);
@@ -86,7 +87,7 @@ nav .nav-button:hover p {
   }
 }
 
-header {
+#header-top {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -97,72 +98,72 @@ header {
   border-bottom: 1px solid gray;
   margin: 0;
 }
-header .left {
+#header-top .left {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
-header .left img {
+#header-top .left img {
   width: 200px;
 }
-header .left h1 {
+#header-top .left h1 {
   text-shadow: 1px 1px 1px #fff, 1px 1px 10px #ccc;
   margin: 0;
   font-size: 7rem;
 }
-header .right {
+#header-top .right {
   text-align: center;
 }
-header .right h2 {
+#header-top .right h2 {
   color: var(--text-color-dark);
   font-size: 1.7rem;
 }
 @media screen and (max-width: 1900px) {
-  header {
+  #header-top {
     flex-direction: column;
     gap: 30px;
     padding-top: 50px;
     padding-bottom: 50px;
   }
-  header .left img {
+  #header-top .left img {
     width: 200px;
   }
-  header .left h1 {
+  #header-top .left h1 {
     font-size: 6.2rem;
   }
 }
 @media screen and (max-width: 700px) {
-  header {
+  #header-top {
     flex-direction: column;
     padding-top: 50px;
     padding-bottom: 50px;
     gap: 10px;
   }
-  header .left img {
+  #header-top .left img {
     width: 150px;
   }
-  header .left h1 {
+  #header-top .left h1 {
     font-size: 4rem;
   }
-  header .right h2 {
+  #header-top .right h2 {
     font-size: 1.2rem;
     margin: 0;
   }
 }
 @media screen and (max-width: 500px) {
-  header {
+  #header-top {
     padding-top: 30px;
     padding-bottom: 30px;
   }
-  header .left img {
+  #header-top .left img {
     width: 100px;
   }
-  header .left h1 {
+  #header-top .left h1 {
     font-size: 3rem;
   }
-  header .right h2 {
+  #header-top .right h2 {
     font-size: 0.8rem;
     margin: 0;
   }
@@ -181,12 +182,12 @@ section {
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
+  margin: 0;
 }
 #phrase-of-update h1 {
   margin: 0;
   font-size: 3rem;
   text-shadow: 1px 1px 1px #fff, 1px 1px 5px #ccc;
-  margin: 0;
 }
 @media screen and (max-width: 700px) {
   #phrase-of-update h1 {
@@ -208,16 +209,19 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--background-color-light);
   margin: 0;
   text-align: center;
 }
-#updates h1 {
+#updates header {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  border-bottom: 1px solid var(--background-color-lighter);
+}
+#updates header h1 {
   margin: 0;
   font-size: 2rem;
-  margin: 0;
 }
 @media screen and (max-width: 700px) {
   #updates h1 {
@@ -233,40 +237,151 @@ section {
     font-size: 1rem;
   }
 }
-#updates div {
+#updates div[name=update-container] {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 100%;
+  max-height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-#updates div .update {
+#updates div[name=update-container] .update {
+  cursor: pointer;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 20px;
+  width: 100%;
+  border-bottom: 1px solid var(--background-color-light);
+  transition: all 0.1s ease-in-out;
 }
-#updates div .update h2 {
+#updates div[name=update-container] .update h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
-#updates div .update p {
+#updates div[name=update-container] .update p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-color-dark);
+}
+#updates div[name=update-container] .update:hover {
+  background-color: var(--background-color-light);
+}
+@media screen and (max-width: 700px) {
+  #updates div[name=update-container] .update h2 {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  #updates div[name=update-container] .update h2 {
+    font-size: 0.8rem;
+  }
+  #updates div[name=update-container] .update p {
+    font-size: 0.6rem;
+  }
+}
+
+#download {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+}
+#download header {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  border-bottom: 1px solid var(--background-color-lighter);
+}
+#download header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+#download header p {
   margin: 0;
   font-size: 0.8rem;
   color: var(--text-color-dark);
 }
 @media screen and (max-width: 700px) {
-  #updates div .update h2 {
-    font-size: 1.2rem;
+  #download h1 {
+    font-size: 1.4rem;
   }
 }
 @media screen and (max-width: 500px) {
-  #updates div .update h2 {
-    font-size: 0.8rem;
+  #download {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
-  #updates div .update p {
-    font-size: 0.6rem;
+  #download h1 {
+    font-size: 1rem;
+  }
+}
+#download div[name=download-container] {
+  padding: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+#download div[name=download-container] h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+#download div[name=download-container] .button-wrap {
+  padding: 1px;
+  background: linear-gradient(30deg, rgba(255, 219, 0, 0) 0%, rgba(255, 0, 0, 0) 31%, rgba(255, 0, 231, 0) 59%, rgba(221, 255, 0, 0) 91%);
+  transition: all 0.1s ease-in-out;
+  height: fit-content;
+}
+#download div[name=download-container] .button-wrap:hover {
+  background: linear-gradient(30deg, rgb(255, 219, 0) 0%, rgb(255, 0, 0) 31%, rgb(255, 0, 231) 59%, rgb(221, 255, 0) 91%);
+  box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.5);
+}
+#download div[name=download-container] a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  text-wrap: nowrap;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--text-color-dark);
+  background: black;
+  backdrop-filter: blur(5px);
+  color: var(--text-color-dark);
+  font-size: 1.2rem;
+  width: 200px;
+  font-family: "Roboto Mono", monospace;
+  transition: all 0.125s ease-in-out;
+}
+#download div[name=download-container] a:hover {
+  color: var(--text-color);
+}
+@media screen and (max-width: 700px) {
+  #download div[name=download-container] {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  #download div[name=download-container] {
+    padding: 20px;
+    gap: 10px;
+  }
+  #download div[name=download-container] h1 {
+    font-size: 1.2rem;
+  }
+  #download div[name=download-container] a {
+    font-size: 1rem;
+    width: 150px;
   }
 }

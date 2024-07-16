@@ -1,11 +1,11 @@
-.text-glow{
-    text-shadow:1px 1px 1px #fff, 1px 1px 10px #ccc;
+.text-glow {
+    text-shadow: 1px 1px 1px #fff, 1px 1px 10px #ccc;
 }
 
-nav{
+nav {
     position: sticky;
     top: 0;
-    
+
     backdrop-filter: blur(15px) brightness(50%);
 
     padding: 10px;
@@ -21,43 +21,44 @@ nav{
 
     border-bottom: 1px solid gray;
 
-    #nav-logo{
+    #nav-logo {
         display: flex;
         align-items: center;
         gap: 10px;
         cursor: pointer;
-        img{
+        img {
             height: 50px;
         }
-        h1{
+        h1 {
             margin: 0;
-            transition: all 0.1s cubic-bezier(1,.5,.5,1);
+            transition: all 0.1s cubic-bezier(1, 0.5, 0.5, 1);
         }
         margin-right: 20px;
     }
-    #nav-logo:hover{
-        h1{
-            text-shadow:1px 1px 1px #fff, 1px 1px 10px #ccc;
+    #nav-logo:hover {
+        h1 {
+            text-shadow: 1px 1px 1px #fff, 1px 1px 10px #ccc;
         }
     }
-    .nav-button{
-        p{
+    .nav-button {
+        a {
+            text-decoration: none;
             text-align: center;
             margin: 0;
             padding: 2px;
             padding-left: 5px;
             padding-right: 5px;
-            text-decoration: none;
-            transition: all 0.2s cubic-bezier(1,0,.5,1);
+            color: var(--text-color);
+            transition: all 0.2s cubic-bezier(1, 0, 0.5, 1);
+            width: 100px;
         }
         cursor: pointer;
-        width: 100px;
         box-shadow: inset 0 0 0 0 var(--accent-color);
         border-radius: 3px;
-        transition: all 0.2s cubic-bezier(1,0,.5,1);
+        transition: all 0.2s cubic-bezier(1, 0, 0.5, 1);
     }
-    .nav-button:hover{
-        p{
+    .nav-button:hover {
+        p {
             color: var(--background-color);
             transform: scale(1.05);
         }
@@ -71,29 +72,29 @@ nav{
         font-size: 1rem;
         padding-right: 30px;
 
-        #nav-logo{
+        #nav-logo {
             margin-right: 10px;
-            img{
+            img {
                 height: 30px;
             }
-            h1{
+            h1 {
                 display: none;
             }
         }
     }
     @media screen and (max-width: 500px) {
         gap: 10px;
-        font-size: .8rem;
+        font-size: 0.8rem;
 
-        #nav-logo{
+        #nav-logo {
             margin-right: 5px;
-            img{
+            img {
                 height: 20px;
             }
         }
     }
 }
-header{
+#header-top {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -103,25 +104,25 @@ header{
     padding-bottom: 100px;
     border-bottom: 1px solid gray;
     margin: 0;
-    
-    .left{
+
+    .left {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        img{
+        img {
             width: 200px;
         }
-        h1{
-            text-shadow:1px 1px 1px #fff, 1px 1px 10px #ccc;
+        h1 {
+            text-shadow: 1px 1px 1px #fff, 1px 1px 10px #ccc;
             margin: 0;
             font-size: 7rem;
         }
     }
-    .right{
+    .right {
         text-align: center;
-        h2{
+        h2 {
             color: var(--text-color-dark);
             font-size: 1.7rem;
         }
@@ -134,11 +135,11 @@ header{
         padding-top: 50px;
         padding-bottom: 50px;
 
-        .left{
-            img{
+        .left {
+            img {
                 width: 200px;
             }
-            h1{
+            h1 {
                 font-size: 6.2rem;
             }
         }
@@ -151,16 +152,16 @@ header{
 
         gap: 10px;
 
-        .left{
-            img{
+        .left {
+            img {
                 width: 150px;
             }
-            h1{
+            h1 {
                 font-size: 4rem;
             }
         }
-        .right{
-            h2{
+        .right {
+            h2 {
                 font-size: 1.2rem;
                 margin: 0;
             }
@@ -170,126 +171,248 @@ header{
         padding-top: 30px;
         padding-bottom: 30px;
 
-        .left{
-            img{
+        .left {
+            img {
                 width: 100px;
             }
-            h1{
+            h1 {
                 font-size: 3rem;
             }
         }
-        .right{
-            h2{
-                font-size: .8rem;
+        .right {
+            h2 {
+                font-size: 0.8rem;
                 margin: 0;
             }
         }
     }
 }
-section{
+section {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid gray;
-    margin: 0
+    margin: 0;
 }
 
-#phrase-of-update{
+#phrase-of-update {
     justify-content: center;
     padding-top: 50px;
     padding-bottom: 50px;
     text-align: center;
+    margin: 0;
 
-    h1{
+    h1 {
         margin: 0;
         font-size: 3rem;
-        text-shadow:1px 1px 1px #fff, 1px 1px 5px #ccc;
-        margin: 0;
+        text-shadow: 1px 1px 1px #fff, 1px 1px 5px #ccc;
     }
 
     @media screen and (max-width: 700px) {
-        h1{
+        h1 {
             font-size: 2.2rem;
         }
     }
     @media screen and (max-width: 500px) {
         padding-top: 20px;
         padding-bottom: 20px;
-        h1{
+        h1 {
             font-size: 1.5rem;
         }
     }
 }
-#updates{
+
+#updates {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--background-color-light);
     margin: 0;
     text-align: center;
 
-    h1{
+    header {
         margin: 0;
-        font-size: 2rem;
-        margin: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        border-bottom: 1px solid var(--background-color-lighter);
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
     }
 
     @media screen and (max-width: 700px) {
-        h1{
+        h1 {
             font-size: 1.4rem;
         }
     }
     @media screen and (max-width: 500px) {
         padding-top: 10px;
         padding-bottom: 10px;
-        h1{
+        h1 {
             font-size: 1rem;
         }
     }
 
-    div{
+    div[name="update-container"] {
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
-        gap: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        width: 100%;
 
-        .update{
+        max-height: 500px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        .update {
+            cursor: pointer;
+            padding: 20px;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            h2{
+
+            width: 100%;
+            border-bottom: 1px solid var(--background-color-light);
+
+            h2 {
                 margin: 0;
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
-            p{
+            p {
                 margin: 0;
-                font-size: .8rem;
+                font-size: 0.8rem;
                 color: var(--text-color-dark);
             }
+            transition: all 0.1s ease-in-out;
+        }
+        .update:hover {
+            background-color: var(--background-color-light);
         }
 
         @media screen and (max-width: 700px) {
-            .update{
-                h2{
-                    font-size: 1.2rem;
+            .update {
+                h2 {
+                    font-size: 1.1rem;
                 }
             }
         }
         @media screen and (max-width: 500px) {
-            .update{
-                h2{
-                    font-size: .8rem;
+            .update {
+                h2 {
+                    font-size: 0.8rem;
                 }
-                p{
-                    font-size: .6rem;
+                p {
+                    font-size: 0.6rem;
                 }
+            }
+        }
+    }
+}
+#download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+
+    header {
+        margin: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        border-bottom: 1px solid var(--background-color-lighter);
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-color-dark);
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        h1 {
+            font-size: 1.4rem;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        h1 {
+            font-size: 1rem;
+        }
+    }
+
+    div[name="download-container"] {
+        padding: 40px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .button-wrap{
+            padding: 1px;
+            background: linear-gradient(30deg, rgba(255,219,0,0) 0%, rgba(255,0,0,0) 31%, rgba(255,0,231,0) 59%, rgba(221,255,0,0) 91%);
+            transition: all 0.1s ease-in-out;
+            height: fit-content;
+        }
+        .button-wrap:hover{
+            background: linear-gradient(30deg, rgba(255,219,0,1) 0%, rgba(255,0,0,1) 31%, rgba(255,0,231,1) 59%, rgba(221,255,0,1) 91%);
+            box-shadow: 0 0 5px 0 rgba(255,255,255,0.5);
+        }
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-decoration: none;
+            text-wrap: nowrap;
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--text-color-dark);
+            background: black;
+            backdrop-filter: blur(5px);
+            color: var(--text-color-dark);
+            font-size: 1.2rem;
+            width: 200px;
+            font-family: "Roboto Mono", monospace;
+            transition: all 0.125s ease-in-out;
+        }
+        a:hover{
+            color: var(--text-color);
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        div[name="download-container"] {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        div[name="download-container"] {
+            padding: 20px;
+            gap: 10px;
+            h1 {
+                font-size: 1.2rem;
+            }
+            a {
+                font-size: 1rem;
+                width: 150px;
             }
         }
     }
