@@ -1,1 +1,1 @@
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![LOGO](https://github.com/sho96/Delta/blob/master/readmefiles/logo.svg?raw=true)
