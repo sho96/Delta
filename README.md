@@ -8,6 +8,8 @@ Currently in development, so some features of Python may not work.
 
 ## Usage
 ```python compile.py sourcefile.dt``` (requires python 3.12+) <br>
+OR<br>
+```compile sourcefile.dt``` if you have compiler executable
 
 ## Using compiler executables
 I've already made [executables for x64 on Windows & Mac](https://github.com/sho96/Delta/tree/master/compilers)<br>
