@@ -1,6 +1,6 @@
 <img src="https://github.com/sho96/Delta/blob/master/readmefiles/logo.png?raw=true" alt="LOGO">
 
-# Delta [Python to C++ compiler](https://delta-lang.vercel.app)
+# Delta [🔗](https://delta-lang.vercel.app)
 <h3>The Python to C++ compiler</h3>
 Delta lets you compile vanilla python code to C++. <br>
 It also supports direct C++ implementation. <br>
