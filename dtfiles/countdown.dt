@@ -1,0 +1,20 @@
+from cpph import time
+
+def print_override(msg: str) -> None:
+    print(f"\r{msg}", end="")
+
+
+count_down: int = int(input("Count down: "))
+start_time: int = cpp("time(nullptr)")
+while True:
+    current_time: int = cpp("time(nullptr)")
+    time_diff: int = abs(current_time - start_time)
+    to_show: int = count_down - time_diff
+
+    if to_show < 0:
+        break
+
+    print_override(str(to_show))
+
+print_override("Done!")
+print()

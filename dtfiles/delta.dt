@@ -1,0 +1,56 @@
+#predefined classes
+class char:
+    pass
+
+###END_PRELUDE###
+from cpp import cmath
+from cpph import time
+
+string: str = "some random string"
+integer: int = 123
+decimal: float = 1.23
+chr2: char = 123
+isTrue: bool = True
+s: tuple[int, float, bool] = (1, 1.23, False)
+
+l: list[float] = [0.123, 0.234, 0.345]
+d: dict[str, int] = {"one": 1, "two": 2, "three": 3}
+items: list[tuple[str, int, int]] = [("kahimochi", 4, 500), ("pets", 20, 215), ("paper clips", 50, 100)]
+
+def name(arg1: int, arg2: str) -> None:
+    print(arg2)
+    print(arg1)
+    #convert to string
+    print(str(arg1))
+
+x: int = 0
+
+if (x <= 1 and x >= -10) or (x >= 10 and x <= 20):
+    print("x is in range!!")
+elif x == 100:
+    print("x is 100")
+else:
+    print("x is not in range...")
+
+for i in range(10):
+    print(i)
+
+for item in items:
+    print(item[0])
+    print(item[1])
+    print(item[2])
+
+while x < 1000:
+    x += 1
+
+match x:
+    case 1:
+        print("x is 1")
+    case 2:
+        print("x is 2")
+    case _:
+        print("x is not 1 or 2")
+
+print(f"The value of x is {x}")
+
+print("Hello Delta!!", end="")

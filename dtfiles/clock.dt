@@ -1,0 +1,45 @@
+from cpph import time
+
+def getTimeDetails(time: int) -> dict[str, int]:
+    one_second: int = 1
+    one_minute: int = one_second * 60
+    one_hour: int = one_minute * 60
+    one_day: int = one_hour * 24
+    one_month: int = one_day * 30
+    one_year: int = one_month * 12
+    
+    return {
+        "year": time // one_year,
+        "month": (time % one_year) // one_month,
+        "day": (time % one_month) // one_day,
+        "hour": (time % one_day) // one_hour,
+        "minute": (time % one_hour) // one_minute,
+        "second": (time % one_minute)
+    }
+
+
+month_conversion: dict[int, str] = {
+    1: "Jan.",
+    2: "Feb.",
+    3: "Mar.",
+    4: "Apr.",
+    5: "May",
+    6: "Jun.",
+    7: "Jul.",
+    8: "Aug.",
+    9: "Sep.",
+    10: "Oct.",
+    11: "Nov.",
+    12: "Dec."
+}
+
+previousTime:int = 0
+
+while True:
+    currentTime: int = cpp("time(nullptr)")
+    if currentTime != previousTime:
+        previousTime = currentTime
+        details: dict[str, int] = getTimeDetails(currentTime)
+        print("\r", details["year"], "-", details["month"], "-", details["day"], " ", details["hour"], ":", details["minute"], ":", details["second"], end="")
+    
+    
