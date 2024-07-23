@@ -1,5 +1,4 @@
 import ast
-
 def get_datatype(node, identifier_datatype_map, **kwargs) -> ast.Name | ast.Subscript | ast.Constant:
     if isinstance(node, ast.Name):
         return get_Name_datatype(node, identifier_datatype_map, **kwargs)
@@ -631,6 +630,7 @@ def compile_Compare(node, identifier_datatype_map, **kwargs) -> list[str]:
     
 
 
+
 def compile_Call(node, identifier_datatype_map, **kwargs) -> list[str]:
     assert isinstance(node, ast.Call)
     func = node.func
@@ -682,6 +682,10 @@ def compile_Call(node, identifier_datatype_map, **kwargs) -> list[str]:
                 match target_dtype.id:
                     case "str":
                         return ["std::stoi(", compile_part(target, identifier_datatype_map, **kwargs), ")"]
+                    case "float":
+                        return ["static_cast<int>(", compile_part(target, identifier_datatype_map, **kwargs), ")"]
+                    case "int":
+                        return [compile_part(target, identifier_datatype_map, **kwargs)]
                     case _:
                         raise ValueError(f"cannot convert {target_dtype} to int")
             else:
@@ -693,6 +697,10 @@ def compile_Call(node, identifier_datatype_map, **kwargs) -> list[str]:
                 match target_dtype.id:
                     case "str":
                         return ["std::stod(", compile_part(target, identifier_datatype_map, **kwargs), ")"]
+                    case "int":
+                        return ["static_cast<float>(", compile_part(target, identifier_datatype_map, **kwargs), ")"]
+                    case "float":
+                        return [compile_part(target, identifier_datatype_map, **kwargs)]
                     case _:
                         raise ValueError(f"cannot convert {target_dtype} to float")
             else:
@@ -962,6 +970,8 @@ def compile_Call(node, identifier_datatype_map, **kwargs) -> list[str]:
                     pass
         else:
             raise ValueError(f"{value} is not supported for attribute call")
+            
+        
             
         
 
@@ -1812,6 +1822,7 @@ std::vector<T> repeatVec(std::vector<T> vec, int count) {
 }
 
 """
+
 import sys
 import os
 
@@ -1886,7 +1897,6 @@ with open(output_file, 'w') as f:
     f.write(template)
     
 print(f"Compiled {input_file} to {output_file}")
-
 
 
 
