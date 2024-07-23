@@ -149,6 +149,24 @@ def get_Attribute_datatype(node, identifier_datatype_map, **kwargs) -> ast.Name 
                         return ast.Name(id="int", ctx=ast.Load())
                     case "count":
                         return ast.Name(id="int", ctx=ast.Load())
+                    case "isdigit":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "isdecimal":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "isnumeric":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "isalpha":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "isalnum":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "isascii":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "isspace":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "isupper":
+                        return ast.Name(id="bool", ctx=ast.Load())
+                    case "islower":
+                        return ast.Name(id="bool", ctx=ast.Load())
                     case _:
                         raise ValueError(f"{base_type} has no available attributes nor supports attributes")
             case "char":
@@ -213,6 +231,8 @@ def get_Constant_datatype(node, identifier_datatype_map, **kwargs) -> ast.Name |
         return ast.Name(id="bool", ctx=ast.Load())
     else:
         raise ValueError(f"Unsupported constant type: {type(datatype)}")
+
+
 def get_BinOp_datatype(node, identifier_datatype_map, **kwargs) -> ast.Name | ast.Subscript | ast.Constant:
     left = get_datatype(node.left, identifier_datatype_map, **kwargs)
     right = get_datatype(node.right, identifier_datatype_map, **kwargs)
@@ -220,106 +240,94 @@ def get_BinOp_datatype(node, identifier_datatype_map, **kwargs) -> ast.Name | as
     if isinstance(left, ast.Name) and isinstance(right, ast.Name):
         left_type = left.id
         right_type = right.id
-        match operator:
-            case ast.Add():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
+        if left_type in ["int", "float"] and right_type in ["int", "float"]:
+            match operator:
+                case ast.Add():
                     if left_type == "int" and right_type == "int":
                         return ast.Name(id="int", ctx=ast.Load())
                     else:
                         return ast.Name(id="float", ctx=ast.Load())
-                elif left_type == "str" and right_type == "str":
-                    return ast.Name(id="str", ctx=ast.Load())
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.Sub():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
+                case ast.Sub():
                     if left_type == "int" and right_type == "int":
                         return ast.Name(id="int", ctx=ast.Load())
                     else:
                         return ast.Name(id="float", ctx=ast.Load())
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.Mult():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
+                case ast.Mult():
                     if left_type == "int" and right_type == "int":
                         return ast.Name(id="int", ctx=ast.Load())
                     else:
                         return ast.Name(id="float", ctx=ast.Load())
-                elif left_type == "str" and right_type == "int":
-                    return ast.Name(id="str", ctx=ast.Load())
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.Div():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        return ast.Name(id="float", ctx=ast.Load())
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.Mod():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.Pow():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        return ast.Name(id="float", ctx=ast.Load())
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.BitOr():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.BitXor():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.BitAnd():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.LShift():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.RShift():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
-                    if left_type == "int" and right_type == "int":
-                        return ast.Name(id="int", ctx=ast.Load())
-                    else:
-                        raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case ast.FloorDiv():
-                if left_type in ["int", "float"] and right_type in ["int", "float"]:
+                case ast.Div():
+                    return ast.Name(id="float", ctx=ast.Load())    
+                case ast.Mod():
                     return ast.Name(id="int", ctx=ast.Load())
-                else:
-                    raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
-            case _:
-                raise ValueError(f"Unsupported operation between {left_type} and {right_type}")
+                case ast.Pow():
+                    if left_type == "int" and right_type == "int":
+                        return ast.Name(id="int", ctx=ast.Load())
+                    else:
+                        return ast.Name(id="float", ctx=ast.Load())
+                case ast.BitOr():
+                    if left_type == "int" and right_type == "int":
+                        return ast.Name(id="int", ctx=ast.Load())
+                    else:
+                        raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+                case ast.BitXor():
+                    if left_type == "int" and right_type == "int":
+                        return ast.Name(id="int", ctx=ast.Load())
+                    else:
+                        raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+                case ast.BitAnd():
+                    if left_type == "int" and right_type == "int":
+                        return ast.Name(id="int", ctx=ast.Load())
+                    else:
+                        raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+                case ast.LShift():
+                    if left_type == "int" and right_type == "int":
+                        return ast.Name(id="int", ctx=ast.Load())
+                    else:
+                        raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+                case ast.RShift():
+                    if left_type == "int" and right_type == "int":
+                        return ast.Name(id="int", ctx=ast.Load())
+                    else:
+                        raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+                case ast.FloorDiv():
+                    return ast.Name(id="int", ctx=ast.Load())
+                case _:
+                    raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+        elif left_type == "str" and right_type == "str":
+            return ast.Name(id="str", ctx=ast.Load())
+        elif left_type == "str" and right_type == "int":
+            return ast.Name(id="str", ctx=ast.Load())
+        else:
+            raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+    elif isinstance(left, ast.Subscript) and isinstance(right, ast.Subscript):
+        left_type = left.value.id
+        right_type = right.value.id
+        if left_type == "list" and right_type == "list":
+            #check left and right dtype equality if possible
+            return left
+        elif left_type == "dict" and right_type == "dict":
+            #check left and right dtype equality if possible
+            return left
+        elif left_type == "set" and right_type == "set":
+            #check left and right dtype equality if possible
+            return left
+        else:
+            raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+    elif isinstance(left, ast.Subscript) and isinstance(right, ast.Name):
+        left_type = left.value.id
+        right_type = right.id
+        if left_type == "list" and right_type == "int":
+            return left
+        else:
+            raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+    elif isinstance(left, ast.Name) and isinstance(right, ast.Subscript):
+        left_type = left.id
+        right_type = right.value.id
+        raise ValueError(f"Unsupported operation '{operator}' between {left_type} and {right_type}")
+    else:
+        raise ValueError(f"what kind of operation is this???")
 
 #def compile_part(node, compile_function=False, compile_importFrom=False, is_type_hint=False) -> list[str]:
 def compile_part(node, identifier_datatype_map, **kwargs) -> list[str]:
@@ -514,32 +522,83 @@ def compile_BinOp(node, identifier_datatype_map, **kwargs) -> list[str]:
     assert isinstance(node, ast.BinOp)
     left = node.left
     right = node.right
+    left_type = get_datatype(left, identifier_datatype_map)
+    right_type = get_datatype(right, identifier_datatype_map)
     op_type = node.op
-    if isinstance(op_type, ast.Add):
-        return [compile_part(left, identifier_datatype_map), "+", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.Sub):
-        return [compile_part(left, identifier_datatype_map), "-", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.Mult):
-        return [compile_part(left, identifier_datatype_map), "*", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.Div):
-        return ["(float)", compile_part(left, identifier_datatype_map), "/ (float)", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.Mod):
-        return [compile_part(left, identifier_datatype_map), "%", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.Pow):
-        return ["std::pow(", compile_part(left, identifier_datatype_map), ",", compile_part(right, identifier_datatype_map), ")"]
-    if isinstance(op_type, ast.BitOr):
-        return [compile_part(left, identifier_datatype_map), "|", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.BitXor):
-        return [compile_part(left, identifier_datatype_map), "^", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.BitAnd):
-        return [compile_part(left, identifier_datatype_map), "&", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.LShift):
-        return [compile_part(left, identifier_datatype_map), "<<", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.RShift):
-        return [compile_part(left, identifier_datatype_map), ">>", compile_part(right, identifier_datatype_map)]
-    if isinstance(op_type, ast.FloorDiv):
-        return ["(int)(", compile_part(left, identifier_datatype_map), "/ (int)", compile_part(right, identifier_datatype_map), ")"]
-    raise ValueError(f"Unsupported binary operator: {op_type}")
+    if isinstance(left_type, ast.Name) and isinstance(right_type, ast.Name):
+        left_type_name = left_type.id
+        right_type_name = right_type.id
+        if left_type_name in ["float", "int"] and right_type_name in ["float", "int"]:
+            match op_type:
+                case ast.Add():
+                    return [compile_part(left, identifier_datatype_map), "+", compile_part(right, identifier_datatype_map)]
+                case ast.Sub():
+                    return [compile_part(left, identifier_datatype_map), "-", compile_part(right, identifier_datatype_map)]
+                case ast.Mult():
+                    return [compile_part(left, identifier_datatype_map), "*", compile_part(right, identifier_datatype_map)]
+                case ast.Div():
+                    return ["(float)", compile_part(left, identifier_datatype_map), "/ (float)", compile_part(right, identifier_datatype_map)]
+                case ast.Mod():
+                    return [compile_part(left, identifier_datatype_map), "%", compile_part(right, identifier_datatype_map)]
+                case ast.Pow():
+                    pref = ""
+                    if left_type_name == "int" and right_type_name == "int":
+                        pref = "(int)"
+                    return [f"{pref}std::pow(", compile_part(left, identifier_datatype_map), ",", compile_part(right, identifier_datatype_map), ")"]
+                case ast.BitOr():
+                    return [compile_part(left, identifier_datatype_map), "|", compile_part(right, identifier_datatype_map)]
+                case ast.BitXor():
+                    return [compile_part(left, identifier_datatype_map), "^", compile_part(right, identifier_datatype_map)]
+                case ast.BitAnd():
+                    return [compile_part(left, identifier_datatype_map), "&", compile_part(right, identifier_datatype_map)]
+                case ast.LShift():
+                    return [compile_part(left, identifier_datatype_map), "<<", compile_part(right, identifier_datatype_map)]
+                case ast.RShift():
+                    return [compile_part(left, identifier_datatype_map), ">>", compile_part(right, identifier_datatype_map)]
+                case ast.FloorDiv():
+                    return ["(int)(", compile_part(left, identifier_datatype_map), "/", compile_part(right, identifier_datatype_map), ")"]
+                case _:
+                    raise ValueError(f"Unsupported operation '{op_type}' between {left_type_name} and {right_type_name}")
+        if left_type_name == "str" and right_type_name == "str":
+            match op_type:
+                case ast.Add():
+                    return [compile_part(left, identifier_datatype_map), "+", compile_part(right, identifier_datatype_map)]
+                case _:
+                    raise ValueError(f"Unsupported operation '{op_type}' between {left_type_name} and {right_type_name}")
+        if left_type_name == "str" and right_type_name == "int":
+            match op_type:
+                case ast.Mult():
+                    return ["repeatStr(", compile_part(left, identifier_datatype_map), ",", compile_part(right, identifier_datatype_map), ")"]
+                case _:
+                    raise ValueError(f"Unsupported operation '{op_type}' between {left_type_name} and {right_type_name}")
+    elif isinstance(left_type, ast.Subscript) and isinstance(right_type, ast.Subscript):
+        left_type_name = left_type.value.id
+        right_type_name = right_type.value.id
+        if left_type_name == "list" and right_type_name == "list":
+            #check left and right dtype equality if possible
+            return ["concatVec(", compile_part(left, identifier_datatype_map), ",", compile_part(right, identifier_datatype_map), ")"]
+        elif left_type_name == "dict" and right_type_name == "dict":
+            #check left and right dtype equality if possible
+            return ["concatMap(", compile_part(left, identifier_datatype_map), ",", compile_part(right, identifier_datatype_map), ")"]
+        elif left_type_name == "set" and right_type_name == "set":
+            #check left and right dtype equality if possible
+            return ["concatSet(", compile_part(left, identifier_datatype_map), ",", compile_part(right, identifier_datatype_map), ")"]
+        else:
+            raise ValueError(f"Unsupported operation '{op_type}' between {left_type_name} and {right_type_name}")
+    elif isinstance(left_type, ast.Subscript) and isinstance(right_type, ast.Name):
+        left_type_name = left_type.value.id
+        right_type_name = right_type.id
+        if left_type_name == "list" and right_type_name == "int":
+            return ["repeatVec(", compile_part(left, identifier_datatype_map), ",", compile_part(right, identifier_datatype_map), ")"]
+        else:
+            raise ValueError(f"Unsupported operation '{op_type}' between {left_type_name} and {right_type_name}")
+    elif isinstance(left_type, ast.Name) and isinstance(right_type, ast.Subscript):
+        left_type_name = left_type.id
+        right_type_name = right_type.value.id
+        raise ValueError(f"Unsupported operation '{op_type}' between {left_type_name} and {right_type_name}")
+    else:
+        raise ValueError(f"what kind of operation is this???")
+    raise ValueError(f"not yet implemented: {left_type} {op_type} {right_type}")
 
 def compile_BoolOp(node, identifier_datatype_map, **kwargs) -> list[str]:
     assert isinstance(node, ast.BoolOp)
@@ -873,6 +932,24 @@ def compile_Call(node, identifier_datatype_map, **kwargs) -> list[str]:
                                 return ["string_count_char(", compile_part(value, identifier_datatype_map), ", \'", arg.value, "\')"]
                             else:
                                 return ["string_count(", compile_part(value, identifier_datatype_map), ", ", compile_part(arg, identifier_datatype_map), ")"]
+                        case "isdigit":
+                            return ["string_isdigit(", compile_part(value, identifier_datatype_map), ")"]
+                        case "isdecimal":
+                            return ["string_isdigit(", compile_part(value, identifier_datatype_map), ")"]
+                        case "isnumeric":
+                            return ["string_isdigit(", compile_part(value, identifier_datatype_map), ")"]
+                        case "isalpha":
+                            return ["string_isalpha(", compile_part(value, identifier_datatype_map), ")"]
+                        case "isalnum":
+                            return ["string_isalnum(", compile_part(value, identifier_datatype_map), ")"]
+                        case "isascii":
+                            return ["string_isascii(", compile_part(value, identifier_datatype_map), ")"]
+                        case "isspace":
+                            return ["string_isspace(", compile_part(value, identifier_datatype_map), ")"]
+                        case "isupper":
+                            return ["string_isupper(", compile_part(value, identifier_datatype_map), ")"]
+                        case "islower":
+                            return ["string_islower(", compile_part(value, identifier_datatype_map), ")"]
                         case _:
                             raise ValueError(f"attribute '{attr}' is not supported for string")
                 if value_type.id == "char":
@@ -1060,6 +1137,7 @@ def compile_ImportFrom(node, identifier_datatype_map, **kwargs) -> list[str]:
             return [f"#include \"{alias.name}.{ext}\"\n" for alias in names]
         else:
             return [f"#include <{alias.name}.{ext}>\n" for alias in names]
+    
     
     
         
@@ -1360,20 +1438,17 @@ std::string valueToString(const std::string &value)
     return "\\"" + value + "\\"";
 }
 
+// Specialization for bool
+std::string valueToString(const bool &value)
+{
+    return value ? "true" : "false";
+}
+
 // Specialization for std::tuple
 template <typename... Args>
 std::string valueToString(const std::tuple<Args...> &tup)
 {
     return tuple2str(tup);
-}
-
-// Generic valueToString template
-template <typename T>
-std::string valueToString(const T &value)
-{
-    std::ostringstream oss;
-    oss << value;
-    return oss.str();
 }
 
 // Specialization for std::vector
@@ -1395,6 +1470,15 @@ template <typename V>
 std::string valueToString(const std::set<V> &set)
 {
     return set2str(set);
+}
+
+// Generic valueToString template
+template <typename T>
+std::string valueToString(const T &value)
+{
+    std::ostringstream oss;
+    oss << value;
+    return oss.str();
 }
 
 // Conversion functions
@@ -1427,7 +1511,6 @@ std::string map2str(const std::map<K, V> &map)
     return result;
 }
 
-template <typename V>
 std::string set2str(const std::set<V> &set)
 {
     std::string result = "{";
@@ -1451,7 +1534,7 @@ std::string tuple2str_impl(const Tuple &tup, std::index_sequence<Is...>)
         result.resize(result.size() - 2); // Remove last ", "
     result += ")";
     return result;
-}
+
 
 template <typename... Args>
 std::string tuple2str(const std::tuple<Args...> &tup)
@@ -1633,6 +1716,62 @@ int string_count_char(std::string s, char c) {
 
     return count;
 }
+bool string_isdigit(const std::string& str) {
+    for (char ch : str) {
+        if (!std::isdigit(static_cast<unsigned char>(ch))) {
+            return false;
+        }
+    }
+    return true;
+}
+bool string_isalpha(const std::string& str) {
+    for (char ch : str) {
+        if (!std::isalpha(static_cast<unsigned char>(ch))) {
+            return false;
+        }
+    }
+    return true;
+}
+bool string_isalnum(const std::string& str) {
+    for (char ch : str) {
+        if (!std::isalnum(static_cast<unsigned char>(ch))) {
+            return false;
+        }
+    }
+    return true;
+}
+bool string_isascii(const std::string& str) {
+    for (char ch : str) {
+        if (!(ch >= 0 && ch <= 127)) {
+            return false;
+        }
+    }
+    return true;
+}
+bool string_isspace(const std::string& str) {
+    for (char ch : str) {
+        if (!std::isspace(static_cast<unsigned char>(ch))) {
+            return false;
+        }
+    }
+    return true;
+}
+bool string_isupper(const std::string& str) {
+    for (char ch : str) {
+        if (!std::isupper(static_cast<unsigned char>(ch))) {
+            return false;
+        }
+    }
+    return true;
+}
+bool string_islower(const std::string& str) {
+    for (char ch : str) {
+        if (!std::islower(static_cast<unsigned char>(ch))) {
+            return false;
+        }
+    }
+    return true;
+}
 std::string userInput(std::string prompt="") {
     std::cout << prompt;
     std::string input;
@@ -1647,11 +1786,32 @@ std::string createJoinedStr(T var1, Types... var2)
     (ss << ... << var2);
     return ss.str();
 }
+template <typename T>
+std::vector<T> concatVec(std::vector<T> vec1, std::vector<T> vec2)
+{
+    vec1.insert(vec1.end(), vec2.begin(), vec2.end());
+    return vec1;
+}
+template <typename T>
+std::set<T> concatSet(std::set<T> set1, std::set<T> set2){
+    set1.insert(set2.begin(), set2.end());
+    return set1;
+}
+template <typename T, typename U>
+std::map<T, U> concatMap(std::map<T, U> map1, std::map<T, U> map2){
+    map1.insert(map2.begin(), map2.end());
+    return map1;
+}
+template <typename T>
+std::vector<T> repeatVec(std::vector<T> vec, int count) {
+    std::vector<T> result;
+    for (int i = 0; i < count; i++) {
+        result.insert(result.end(), vec.begin(), vec.end());
+    }
+    return result;
+}
+
 """
-
-
-
-
 import sys
 import os
 
@@ -1673,6 +1833,8 @@ print(input_file, output_file)
 
 if input_file == "" and output_file == "":
     print("Arguments: input_file output_file_name")
+    print("options:")
+    print("    --debug   prints the compiling process")
     sys.exit(1)
     
 if input_file == output_file:
@@ -1724,8 +1886,6 @@ with open(output_file, 'w') as f:
     f.write(template)
     
 print(f"Compiled {input_file} to {output_file}")
-
-
 
 
 
