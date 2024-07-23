@@ -1544,7 +1544,7 @@ std::string tuple2str_impl(const Tuple &tup, std::index_sequence<Is...>)
         result.resize(result.size() - 2); // Remove last ", "
     result += ")";
     return result;
-
+}
 
 template <typename... Args>
 std::string tuple2str(const std::tuple<Args...> &tup)
