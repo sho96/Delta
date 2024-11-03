@@ -12,7 +12,7 @@ OR<br>
 ```compile sourcefile.dt``` if you have compiler executable
 
 ## Using compiler executables
-I've already made [executables for x64 on Windows & Mac](https://github.com/sho96/Delta/tree/master/compilers)<br>
+I've already made [executables for x64 on Windows](https://github.com/sho96/Delta/tree/master/compilers)<br>
 
 If you want compiler executables on other platforms, you can easily do so by using [pyinstaller](https://pyinstaller.org/)<br>
 ### 1. Install pyinstaller

@@ -1,4 +1,5 @@
 import ast
+
 def get_datatype(node, identifier_datatype_map, **kwargs) -> ast.Name | ast.Subscript | ast.Constant:
     if isinstance(node, ast.Name):
         return get_Name_datatype(node, identifier_datatype_map, **kwargs)
@@ -630,7 +631,6 @@ def compile_Compare(node, identifier_datatype_map, **kwargs) -> list[str]:
     
 
 
-
 def compile_Call(node, identifier_datatype_map, **kwargs) -> list[str]:
     assert isinstance(node, ast.Call)
     func = node.func
@@ -970,8 +970,6 @@ def compile_Call(node, identifier_datatype_map, **kwargs) -> list[str]:
                     pass
         else:
             raise ValueError(f"{value} is not supported for attribute call")
-            
-        
             
         
 
@@ -1409,12 +1407,10 @@ def compile_import_froms(entire_body, identifier_datatype_map, **kwargs) -> list
 #TO_IMPLEMENT: ClassDef
 
 def compile_body(body, identifier_datatype_map) -> list[str]:
-    global compiler_options
     identifier_datatype_map = identifier_datatype_map.copy()
     result = []
     for code in body:
-        if "-debug" in compiler_options:
-            print(f"compiling {code}")
+        print(f"compiling {code}")
         result.append(compile_part(code, identifier_datatype_map))
         result.append(";\n")
     return result
@@ -1521,6 +1517,7 @@ std::string map2str(const std::map<K, V> &map)
     return result;
 }
 
+template <typename V>
 std::string set2str(const std::set<V> &set)
 {
     std::string result = "{";
@@ -1822,7 +1819,6 @@ std::vector<T> repeatVec(std::vector<T> vec, int count) {
 }
 
 """
-
 import sys
 import os
 
@@ -1897,17 +1893,4 @@ with open(output_file, 'w') as f:
     f.write(template)
     
 print(f"Compiled {input_file} to {output_file}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(f"Compile {output_file} with: g++ {output_file} --std=c++17 (use c++17 or above)")
